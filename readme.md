@@ -52,17 +52,17 @@ Hit `c` to configure, then enable `GATE_USE_TORCH`. Hit `c` again. Now an error 
 
 Set `Torch_DIR` to `<PATH TO installdir>/libtorch/share/cmake/Torch`. Hit `c` again. If it succeeds, hit `g`. 
 
-`make -j4`
+`make -j4`  
 `sudo make install`
 
 `export PATH=/<PATH TO gate-9 dir in install folder>/bin:$PATH`
 
 
 ## GAN 4 Gate (GAGA)
-`sudo apt-get install python3-pip`
-`pip3 install gaga-phsp`
-`pip3 install gatetools`
-`pip3 install torch===1.5.1 torchvision===0.6.1 -f https://download.pytorch.org/whl/torch_stable.html`
+`sudo apt-get install python3-pip`  
+`pip3 install gaga-phsp`  
+`pip3 install gatetools`  
+`pip3 install torch===1.5.1 torchvision===0.6.1 -f https://download.pytorch.org/whl/torch_stable.html`  
 
 
 To be continued.
