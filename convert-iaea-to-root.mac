@@ -1,0 +1,12 @@
+/gate/actor/addActor PhaseSpaceActor MyActor
+/gate/actor/MyActor/save test.root
+
+/gate/run/initialize
+
+/gate/source/addSource varian phaseSpace
+/gate/source/varian/addPhaseSpaceFile Varian_TrueBeam6MV_01.IAEAphsp
+
+/gate/output/root/setFileName test2.root
+/gate/output/root/enable
+
+/gate/application/start
