@@ -8,7 +8,16 @@ The reference installation was done on a Windows machine using WSL 1 with an Ubu
 `sudo apt-get update`
 
 ### Dependencies 
-`sudo apt-get install git dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev libpng-dev liblzma-dev libjpeg-dev python python-dev mesa-utils libtool automake build-essential libssl-dev`
+`sudo apt-get install git dpkg-dev cmake g++ gcc binutils libx11-dev libxpm-dev libxft-dev libxext-dev libpng-dev liblzma-dev libjpeg-dev python python-dev mesa-utils libtool automake build-essential libssl-dev`  
+
+To check if you have a CUDA capable device: `lspci | grep -i nvidia`.  
+
+Install kernel headers and development packages for CUDA:  
+`sudo apt-get install linux-headers-$(uname -r)`
+
+Head to `https://developer.nvidia.com/cuda-downloads` and download the runfile for the target system with e.g.  
+`wget http://developer.download.nvidia.com/compute/cuda/11.0.1/local_installers/cuda_11.0.1_450.36.06_linux.run`  
+Then run the file with `sudo sh cuda_11.0.1_450.36.06_linux.run`.
 
 ## Root
 `cd install`  
