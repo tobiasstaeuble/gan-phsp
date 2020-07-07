@@ -1,12 +1,85 @@
+/gate/verbose Physic    1
+/gate/verbose Cuts      1
+/gate/verbose SD        0
+/gate/verbose Actions   0
+/gate/verbose Actor     0
+/gate/verbose Step      0
+/gate/verbose Error     1
+/gate/verbose Warning   1
+/gate/verbose Output    0
+/gate/verbose Beam      0
+/gate/verbose Volume    0
+/gate/verbose Image     0
+/gate/verbose Geometry  0
+/gate/verbose Core      0
+
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+
+/gate/world/setMaterial            Vacuum
+/gate/world/geometry/setXLength    3.0 m
+/gate/world/geometry/setYLength    3.0 m
+/gate/world/geometry/setZLength    3.0 m
+/gate/world/vis/setVisible 1
+
+/gate/world/daughters/name                     linacGantry
+/gate/world/daughters/insert                   box
+/gate/linacGantry/setMaterial                  Air
+/gate/linacGantry/geometry/setXLength          1.0 mm
+/gate/linacGantry/geometry/setYLength          1.0 mm
+/gate/linacGantry/geometry/setZLength          1.0 mm
+/gate/linacGantry/placement/setRotationAxis    0 1 0
+/gate/linacGantry/placement/setRotationAngle   0 deg
+/gate/linacGantry/vis/setVisible               1
+
+/gate/linacGantry/daughters/name         linac
+/gate/linacGantry/daughters/insert       box
+/gate/linac/setMaterial                  Air
+/gate/linac/geometry/setXLength          1.0 mm
+/gate/linac/geometry/setYLength          1.0 mm
+/gate/linac/geometry/setZLength          1.0 mm
+/gate/linac/placement/setTranslation     0 0 1000 mm
+/gate/linac/vis/setVisible               1
+
+/gate/linac/placement/setTranslation 0 0 1000 mm
+
+/gate/linac/daughters/name               PhS_Plane
+/gate/linac/daughters/insert             cylinder
+/gate/PhS_Plane/setMaterial              Vacuum
+/gate/PhS_Plane/geometry/setRmin         0 mm
+/gate/PhS_Plane/geometry/setRmax         70 mm
+/gate/PhS_Plane/geometry/setHeight       1 nm
+/gate/PhS_Plane/placement/setTranslation 0.0 0.0 -297 mm
+/gate/PhS_Plane/vis/setColor             white
+/gate/PhS_Plane/vis/setVisible           1
+
 /gate/actor/addActor PhaseSpaceActor MyActor
+/gate/actor/MyActor/attachTo            PhS_Plane
 /gate/actor/MyActor/save test.root
+
+/gate/physics/addPhysicsList emstandard_opt3
+/gate/physics/Gamma/SetCutInRegion      world 1 mm
+/gate/physics/Electron/SetCutInRegion   world 1 mm
+/gate/physics/Positron/SetCutInRegion   world 1 mm
+
+/gate/output/root/setFileName test2
+/gate/output/root/enable
 
 /gate/run/initialize
 
-/gate/source/addSource varian phaseSpace
-/gate/source/varian/addPhaseSpaceFile Varian_TrueBeam6MV_01.IAEAphsp
 
-/gate/output/root/setFileName test2.root
-/gate/output/root/enable
+/gate/source/addSource                         varian phaseSpace
+/gate/source/varian/addPhaseSpaceFile          data/Varian_TrueBeam6MV_01.IAEAphsp
+/gate/source/varian/setParticleType            gamma
+/gate/source/varian/attachTo                   PhS_Plane
+/gate/source/varian/useRandomSymmetry          true
+/gate/source/varian/setPhaseSpaceInWorldFrame 
+
+/gate/random/setEngineName MersenneTwister
+/gate/random/setEngineSeed auto
+/gate/application/noGlobalOutput
+/tracking/verbose 2
+/gate/application/setTotalNumberOfPrimaries 50000
 
 /gate/application/start
