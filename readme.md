@@ -21,7 +21,13 @@ Head to `https://developer.nvidia.com/cuda-downloads` and download the runfile f
 `wget http://developer.download.nvidia.com/compute/cuda/11.0.1/local_installers/cuda_11.0.1_450.36.06_linux.run`  
 Then run the file with `sudo sh cuda_11.0.1_450.36.06_linux.run`.  
 
+For libtorch 1.3.1 -> use cuda_10.1.105_418.39_linux.run
+
+
+
 Download `libcudnn` from the NVIDIA site (an account may be necessary). Extract the archive into the `install` directory.  
+
+!! choose correct version here !!
 
 `sudo cp cuda/include/cudnn*.h /usr/local/cuda/include`  
 `sudo cp cuda/lib64/libcudnn* /usr/local/cuda/lib64`  
@@ -92,3 +98,21 @@ Note: libtorch = 1.3.0 / pytorch = 1.5.1
 
 
 To be continued.
+
+
+For building phsp_iaea_to_root:
+Set USE_Torch Flag to Off and specifically build only the target and not Gate
+
+
+
+
+
+
+
+
+libtorch 1.3.1  
+with CUDA 10.1  
+and with cudnn cudnn-10.1-linux-x64-v7.6.5.32
+
+
+
