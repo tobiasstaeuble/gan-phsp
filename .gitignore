@@ -2,3 +2,5 @@
 !/install/.gitkeep
 /data/*
 !/data/.gitkeep
+src/makefile
+src/phsp_iaea_to_root.cc
