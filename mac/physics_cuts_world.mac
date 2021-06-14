@@ -1,0 +1,6 @@
+
+# High cut everywhere by default
+/gate/physics/Gamma/SetCutInRegion      world 10 mm
+/gate/physics/Electron/SetCutInRegion   world 10 mm
+/gate/physics/Positron/SetCutInRegion   world 10 mm
+

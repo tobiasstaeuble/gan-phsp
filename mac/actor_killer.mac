@@ -1,0 +1,15 @@
+/gate/actor/addActor       KillActor kill1
+/gate/actor/kill1/attachTo colli1
+#/gate/actor/kill1/save     output/colli1.txt
+
+/gate/actor/addActor       KillActor kill2
+/gate/actor/kill2/attachTo colli2
+#/gate/actor/kill2/save     output/colli2.txt
+
+/gate/actor/addActor       KillActor kill3
+/gate/actor/kill3/attachTo colli3
+#/gate/actor/kill3/save     output/colli3.txt
+
+/gate/actor/addActor       KillActor kill4
+/gate/actor/kill4/attachTo colli4
+#/gate/actor/kill4/save     output/colli4.txt
