@@ -5,4 +5,7 @@
 /src/*
 !/src/phsp_iaea_to_root
 !/src/phsp_iaea_to_root.cc
+
 output/
+plots/
+plots_gan/
