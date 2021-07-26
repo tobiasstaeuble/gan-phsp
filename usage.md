@@ -1,4 +1,4 @@
-# Overview of Gate and GAGA installation #
+# Overview of Gate and GAGA usage #
 main directory: `/home/ubuntu/gan-phsp`
 
 ## Locations
@@ -11,6 +11,8 @@ main directory: `/home/ubuntu/gan-phsp`
 `/plots_gan`        plots from marginal distribution comparison
 
 `/pth`              configuration files for GAN and generators 
+
+`/src`              source files for IAEAphsp conversion
 
 
 -----------------------------------------------------------------
