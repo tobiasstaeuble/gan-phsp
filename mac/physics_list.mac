@@ -1,0 +1,19 @@
+/gate/physics/addPhysicsList    emstandard_opt4
+
+#/gate/physics/addProcess PhotoElectric
+#/gate/physics/processes/PhotoElectric/setModel StandardModel
+
+#/gate/physics/addProcess Compton
+#/gate/physics/processes/Compton/setModel StandardModel
+
+#/gate/physics/addProcess RayleighScattering
+#/gate/physics/processes/RayleighScattering/setModel PenelopeModel
+
+#/gate/physics/addProcess ElectronIonisation
+#/gate/physics/processes/ElectronIonisation/setModel StandardModel e-
+#/gate/physics/processes/ElectronIonisation/setModel StandardModel e+
+
+# alternative: opt2 opt3 opt4 (slowest + most accurate)
+
+# add the following line if source is decaying ion (no need if gamma source)
+#/gate/physics/addProcess RadioactiveDecay

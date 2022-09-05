@@ -1,0 +1,12 @@
+
+#   1.Target:
+/gate/world/daughters/name                  target_layer
+/gate/world/daughters/insert                box
+/gate/target_layer/geometry/setXLength      3 cm
+/gate/target_layer/geometry/setYLength      3 cm
+/gate/target_layer/geometry/setZLength      0.001 mm
+/gate/target_layer/placement/setTranslation 0 0 -100 cm
+
+/gate/target_layer/setMaterial              Vacuum
+/gate/target_layer/vis/setVisible           1
+/gate/target_layer/vis/setColor             magenta

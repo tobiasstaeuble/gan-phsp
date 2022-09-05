@@ -1,0 +1,15 @@
+
+# Create Volume for actor_depth
+#Attach actor_vol to phantom
+/gate/phantom/daughters/name                    actor_vol_depth
+/gate/phantom/daughters/insert                  box
+
+/gate/actor_vol_depth/geometry/setXLength       {x_dim_depth} mm
+/gate/actor_vol_depth/geometry/setYLength       {y_dim_depth} mm
+/gate/actor_vol_depth/geometry/setZLength       {z_dim_depth} mm
+/gate/actor_vol_depth/placement/setTranslation  0 0 0 cm
+
+
+/gate/actor_vol_depth/setMaterial               Water
+/gate/actor_vol_depth/vis/setColor              yellow
+/gate/actor_vol_depth/describe

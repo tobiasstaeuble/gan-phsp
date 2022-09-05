@@ -1,0 +1,50 @@
+# set z Position relative to target_layer
+/control/alias                          Z_POSITION  -70
+
+
+#collimater
+/gate/world/daughters/name       colli1
+/gate/world/daughters/insert     box
+/gate/colli1/geometry/setXLength        50 cm
+/gate/colli1/geometry/setYLength        50 cm
+/gate/colli1/geometry/setZLength        .001 mm
+/gate/colli1/placement/setTranslation   0 26.5 {Z_POSITION} cm
+/gate/colli1/setMaterial                Vacuum
+/gate/colli1/vis/setVisible             1
+/gate/colli1/vis/setColor               magenta
+
+/gate/world/daughters/name              colli2
+/gate/world/daughters/insert            box
+/gate/colli2/geometry/setXLength        50 cm
+/gate/colli2/geometry/setYLength        50 cm
+/gate/colli2/geometry/setZLength        .001 mm
+/gate/colli2/placement/setTranslation   0 -26.5 {Z_POSITION} cm
+/gate/colli2/setMaterial                Vacuum
+/gate/colli2/vis/setVisible             1
+/gate/colli2/vis/setColor               magenta
+
+/gate/world/daughters/name              colli3
+/gate/world/daughters/insert            box
+/gate/colli3/geometry/setXLength        50 cm
+/gate/colli3/geometry/setYLength        3 cm
+/gate/colli3/geometry/setZLength        .001 mm
+/gate/colli3/placement/setTranslation   26.5 0 {Z_POSITION} cm
+/gate/colli3/setMaterial                Vacuum
+/gate/colli3/vis/setVisible             1
+/gate/colli3/vis/setColor               magenta
+
+/gate/world/daughters/name              colli4
+/gate/world/daughters/insert            box
+/gate/colli4/geometry/setXLength        50 cm
+/gate/colli4/geometry/setYLength        3 cm
+/gate/colli4/geometry/setZLength        .001 mm
+/gate/colli4/placement/setTranslation   -26.5 0 {Z_POSITION} cm
+/gate/colli4/setMaterial                Vacuum
+/gate/colli4/vis/setVisible             1
+/gate/colli4/vis/setColor               magenta
+
+
+
+
+
+

@@ -1,0 +1,16 @@
+
+# Create Volume for actor_profile
+#Attach actor_vol to phantom
+/gate/phantom/daughters/name                              actor_vol_profile_x
+/gate/phantom/daughters/insert                            box
+
+/gate/actor_vol_profile_x/geometry/setXLength             {x_dim_profile_x} mm
+/gate/actor_vol_profile_x/geometry/setYLength             {y_dim_profile_x} mm
+/gate/actor_vol_profile_x/geometry/setZLength             {z_dim_profile_x} mm
+/gate/actor_vol_profile_x/placement/setTranslation        0 0 -10 cm
+
+
+/gate/actor_vol_profile_x/setMaterial                     Water
+/gate/actor_vol_profile_x/describe
+
+/gate/actor_vol_profile_x/vis/setColor                    yellow

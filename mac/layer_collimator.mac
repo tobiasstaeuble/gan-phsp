@@ -1,0 +1,172 @@
+# -----------------------------------------------------
+# SECONDARY_COLLIMATOR
+# -----------------------------------------------------
+# All jaws are placed in boxes. The boxes are rotated about the source 
+# Currently setup for a 10x10 square field size
+# Angle of roation determines field size:
+# 9.8 x 9.8 cm -> 2.805 deg
+#
+#Y Jaws
+#
+#   Y-Jaw Top Layer 
+
+/gate/world/daughters/name              Y_Jaw_Top_layer
+/gate/world/daughters/insert            box
+/gate/Y_Jaw_Top_layer/geometry/setZLength      0.1 cm
+/gate/Y_Jaw_Top_layer/geometry/setYLength      20 cm
+/gate/Y_Jaw_Top_layer/geometry/setXLength      20 cm
+/gate/Y_Jaw_Top_layer/placement/setTranslation 0 0 -72.11 cm
+/gate/Y_Jaw_Top_layer/setMaterial              Air
+/gate/Y_Jaw_Top_layer/vis/setVisible           1     
+/gate/Y_Jaw_Top_layer/vis/setColor             cyan
+#/gate/Y_Jaw_Top_layer/vis/forceSolid
+
+
+#Y1 Jaw
+/gate/world/daughters/name                  y1box
+/gate/world/daughters/insert                box
+/gate/y1box/setMaterial                     Air
+/gate/y1box/geometry/setXLength             20 cm
+/gate/y1box/geometry/setYLength             20 cm
+/gate/y1box/geometry/setZLength             7.77 cm
+
+########### Y1 = 5cm im ISO #########################################
+/gate/y1box/placement/setTranslation        0 -11.5723 -68.804 cm
+/gate/y1box/placement/setRotationAngle 2.86241 deg
+########### Y1 = 10cm im ISO #########################################
+#/gate/y1box/placement/setTranslation        0 -13.0964115 -69.5357242 cm
+#/gate/y1box/placement/setRotationAngle 5.71059314 deg
+/gate/y1box/placement/setRotationAxis 1 0 0
+/gate/y1box/vis/setVisible                  0
+
+/gate/y1box/daughters/name                  y1jaw
+/gate/y1box/daughters/insert                box
+/gate/y1jaw/setMaterial                     Tungsten
+/gate/y1jaw/geometry/setXLength             20 cm
+/gate/y1jaw/geometry/setYLength             20 cm
+/gate/y1jaw/geometry/setZLength             7.77 cm
+/gate/y1jaw/vis/forceSolid
+/gate/y1jaw/vis/setColor                    yellow
+
+##Y2 Jaw
+/gate/world/daughters/name                  y2box
+/gate/world/daughters/insert                box
+/gate/y2box/setMaterial                     Air
+/gate/y2box/geometry/setXLength             20 cm
+/gate/y2box/geometry/setYLength             20 cm
+/gate/y2box/geometry/setZLength             7.77 cm
+
+########### Y2 = 5cm im ISO #########################################
+/gate/y2box/placement/setTranslation        0 11.5723 -68.804 cm
+/gate/y2box/placement/setRotationAngle -2.86241 deg
+########### y2box = 10cm im ISO #########################################
+#/gate/y2box/placement/setTranslation        0 13.0964115 -69.5357242 cm
+#/gate/y2box/placement/setRotationAngle -5.71059314 deg
+/gate/y2box/placement/setRotationAxis 1 0 0
+/gate/y2box/vis/setVisible                  0
+
+/gate/y2box/daughters/name                  y2jaw
+/gate/y2box/daughters/insert                box
+/gate/y2jaw/setMaterial                     Tungsten
+/gate/y2jaw/geometry/setXLength             20 cm
+/gate/y2jaw/geometry/setYLength             20 cm
+/gate/y2jaw/geometry/setZLength             7.77 cm
+/gate/y2jaw/vis/forceSolid
+/gate/y2jaw/vis/setColor                    red
+
+#--------------------------------------------------------------
+#   X Jaws
+#--------------------------------------------------------------
+#
+#   X-Jaw Top Layer 
+
+/gate/world/daughters/name              X_Jaw_Top_layer
+/gate/world/daughters/insert            box
+/gate/X_Jaw_Top_layer/geometry/setZLength      0.1 cm
+/gate/X_Jaw_Top_layer/geometry/setYLength      20 cm
+/gate/X_Jaw_Top_layer/geometry/setXLength      50 cm
+/gate/X_Jaw_Top_layer/placement/setTranslation 0 0 -63.39 cm
+/gate/X_Jaw_Top_layer/setMaterial              Air
+/gate/X_Jaw_Top_layer/vis/setVisible           1     
+/gate/X_Jaw_Top_layer/vis/setColor             magenta
+#/gate/X_Jaw_Top_layer/vis/forceSolid
+
+#***************   X1 Jaw  ******************************************
+
+/gate/world/daughters/name                   x1_Trans_box
+/gate/world/daughters/insert                 box
+/gate/x1_Trans_box/geometry/setXLength            6.0452 cm
+/gate/x1_Trans_box/geometry/setYLength              20 cm
+/gate/x1_Trans_box/geometry/setZLength            6.8072 cm
+########### X1 = 5cm im ISO ################
+/gate/x1_Trans_box/placement/setTranslation       -5.07154 0 -59.0212 cm
+########### X1 = 10cm im ISO ###############
+#/gate/x1_Trans_box/placement/setTranslation       -13.0226 0 -59.0212 cm
+/gate/x1_Trans_box/setMaterial                    Air
+/gate/x1_Trans_box/vis/setColor                   red
+/gate/x1_Trans_box/vis/setVisible                 0  
+
+/gate/x1_Trans_box/daughters/name                   x1_Rot_box
+/gate/x1_Trans_box/daughters/insert                 box
+/gate/x1_Rot_box/geometry/setXLength            6.0452 cm
+/gate/x1_Rot_box/geometry/setYLength            20 cm
+/gate/x1_Rot_box/geometry/setZLength            6.8072 cm
+/gate/x1_Rot_box/placement/setRotationAxis      0 1 0
+########### X1 = 5cm im ISO ###############
+/gate/x1_Rot_box/placement/setRotationAngle     -2.8624052 deg
+########### X1 = 10cm im ISO #############
+#/gate/x1_Rot_box/placement/setRotationAngle     -5.7105931 deg
+/gate/x1_Rot_box/setMaterial                    Air
+/gate/x1_Rot_box/vis/setColor                   blue
+/gate/x1_Rot_box/vis/setVisible                 0
+
+/gate/x1_Rot_box/daughters/name                   x1jaw
+/gate/x1_Rot_box/daughters/insert                 box
+/gate/x1jaw/geometry/setXLength            13.462 cm
+/gate/x1jaw/geometry/setYLength            20 cm
+/gate/x1jaw/geometry/setZLength            7.77 cm
+/gate/x1jaw/placement/setTranslation       -3.7084 0 -0.4826 cm
+/gate/x1jaw/setMaterial                    Tungsten
+/gate/x1jaw/vis/setColor                   cyan
+/gate/x1jaw/vis/forceSolid
+/gate/x1jaw/vis/setVisible                 1
+
+#***************   X2 Jaw  ******************************************
+
+/gate/world/daughters/name                   x2_Trans_box
+/gate/world/daughters/insert                 box
+/gate/x2_Trans_box/geometry/setXLength            6.0452 cm
+/gate/x2_Trans_box/geometry/setYLength              20 cm
+/gate/x2_Trans_box/geometry/setZLength            6.8072 cm
+########### X2 = 5cm im ISO ################
+/gate/x2_Trans_box/placement/setTranslation       5.07154 0 -59.0212 cm
+########### X2 = 10cm im ISO ###############
+#/gate/x2_Trans_box/placement/setTranslation       -13.0226 0 -59.0212 cm
+/gate/x2_Trans_box/setMaterial                    Air
+/gate/x2_Trans_box/vis/setColor                   red
+/gate/x2_Trans_box/vis/setVisible                 0 
+
+/gate/x2_Trans_box/daughters/name                   x2_Rot_box
+/gate/x2_Trans_box/daughters/insert                 box
+/gate/x2_Rot_box/geometry/setXLength            6.0452 cm
+/gate/x2_Rot_box/geometry/setYLength            20 cm
+/gate/x2_Rot_box/geometry/setZLength            6.8072 cm
+/gate/x2_Rot_box/placement/setRotationAxis      0 1 0
+########### X2 = 5cm im ISO ###############
+/gate/x2_Rot_box/placement/setRotationAngle     2.8624052 deg
+########### X2 = 10cm im ISO #############
+#/gate/x2_Rot_box/placement/setRotationAngle     5.7105931 deg
+/gate/x2_Rot_box/setMaterial                    Air
+/gate/x2_Rot_box/vis/setColor                   blue
+/gate/x2_Rot_box/vis/setVisible                 0
+
+/gate/x2_Rot_box/daughters/name                   x2jaw
+/gate/x2_Rot_box/daughters/insert                 box
+/gate/x2jaw/geometry/setXLength            13.462 cm
+/gate/x2jaw/geometry/setYLength            20 cm
+/gate/x2jaw/geometry/setZLength            7.77 cm
+/gate/x2jaw/placement/setTranslation       3.7084 0 -0.4826 cm
+/gate/x2jaw/setMaterial                    Tungsten
+/gate/x2jaw/vis/setColor                   blue
+/gate/x2jaw/vis/forceSolid
+/gate/x2jaw/vis/setVisible                 1

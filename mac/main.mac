@@ -1,0 +1,253 @@
+
+# -----------------------------------------------------------------------------
+# Alias
+# Need alias N             => number of particle
+# Need alias JOB_ID        => number of job
+# Need alias TYPE          => 'analog' or 'gaga'
+
+# -----------------------------------------------------------------------------
+# Material Database
+
+/gate/geometry/setMaterialDatabase data/GateMaterials.db
+
+
+
+
+
+
+
+
+# -----------------------------------------------------------------------------
+# Visualization
+ 
+#/control/execute mac/visu.mac
+/control/execute mac/verbose.mac
+
+
+
+
+
+
+
+# -----------------------------------------------------------------------------
+# LINAC Layers
+
+# Target:
+/control/execute mac/layer_target.mac
+
+
+# Source
+/control/execute mac/layer_phsp.mac
+
+
+# Collimator:
+/control/execute mac/layer_collimator.mac
+
+
+
+
+
+
+# -----------------------------------------------------------------------------
+# Physics
+
+/control/execute mac/physics_list.mac
+/control/execute mac/physics_cuts_world.mac
+/control/execute mac/physics_cuts_phantom.mac
+/gate/physics/displayCuts
+
+
+
+
+
+
+
+# ---------------------------------------------
+# World
+
+/gate/world/geometry/setXLength 0.5 m
+/gate/world/geometry/setYLength 0.5 m
+/gate/world/geometry/setZLength 2 m
+/gate/world/vis/setColor        white
+/gate/world/vis/forceWireframe
+/gate/world/setMaterial         Air
+
+
+
+# Water Box
+
+/gate/world/daughters/name             phantom
+/gate/world/daughters/insert           box
+/gate/phantom/geometry/setXLength      30 cm
+/gate/phantom/geometry/setYLength      30 cm
+/gate/phantom/geometry/setZLength      30 cm
+/gate/phantom/placement/setTranslation 0 0 15 cm
+/gate/phantom/setMaterial              Water
+/gate/phantom/vis/setVisible           1
+/gate/phantom/vis/setColor             blue
+
+
+
+
+
+
+
+#=====================================================
+# DETECTORS
+
+
+
+# Killer
+#/control/execute mac/actor_killer.mac
+
+
+
+#---------------------
+# Depth Dose
+/control/alias                              x_dim_depth  4
+/control/alias                              y_dim_depth  4
+/control/alias                              z_dim_depth  300
+
+
+#/control/execute                           mac/actor_depth.mac
+/gate/actor/addActor                        DoseActor  depthdose
+#/gate/actor/depthdose/attachTo    	        actor_vol_depth
+/gate/actor/depthdose/attachTo              phantom
+/gate/actor/depthdose/setSize               {x_dim_depth} {y_dim_depth} {z_dim_depth} mm
+
+
+
+#at wich position is Hit stored
+/gate/actor/depthdose/stepHitType           random
+
+#set Resolution gives Dosel
+#/gate/actor/depthdose/setResolution         1 1 60
+/gate/actor/depthdose/setVoxelSize          4 4 4
+
+
+/gate/actor/depthdose/normaliseDoseToMax    false
+/gate/actor/depthdose/enableEdep            false
+/gate/actor/depthdose/enableUncertaintyEdep false
+/gate/actor/depthdose/enableNumberOfHits    false
+/gate/actor/depthdose/enableDose            true
+/gate/actor/depthdose/enableUncertaintyDose true
+/gate/actor/depthdose/saveEveryNSeconds     60
+
+
+
+
+
+#---------------------
+# Profile Dose in x
+/control/alias                                      x_dim_profile_x  300
+/control/alias                                      y_dim_profile_x  4
+/control/alias                                      z_dim_profile_x  4
+
+#/control/execute                                    mac/actor_profile_x.mac
+/gate/actor/addActor                                DoseActor  profiledose_x
+#/gate/actor/profiledose_x/attachTo    	             actor_vol_profile_x
+/gate/actor/profiledose_x/attachTo                  phantom
+/gate/actor/profiledose_x/setSize                   {x_dim_profile_x} {y_dim_profile_x} {z_dim_profile_x} mm
+/gate/actor/profiledose_x/setPosition               0 0 -13.6 cm
+
+
+
+
+
+#at wich position is Hit stored
+/gate/actor/profiledose_x/stepHitType               random
+
+
+#set Resolution gives Dosel
+#/gate/actor/profiledose_x/setResolution             20 1 1
+/gate/actor/profiledose_x/setVoxelSize              4 4 4
+
+
+/gate/actor/profiledose_x/normaliseDoseToMax        false
+/gate/actor/profiledose_x/enableEdep                false
+/gate/actor/profiledose_x/enableUncertaintyEdep     false
+/gate/actor/profiledose_x/enableNumberOfHits        false
+/gate/actor/profiledose_x/enableDose                true
+/gate/actor/profiledose_x/enableUncertaintyDose     true
+/gate/actor/profiledose_x/saveEveryNSeconds         60
+
+
+
+
+#---------------------
+# Profile dose in y
+/control/alias                                      x_dim_profile_y  4
+/control/alias                                      y_dim_profile_y  300
+/control/alias                                      z_dim_profile_y  4
+
+#/control/execute                                    mac/actor_profile_y.mac
+/gate/actor/addActor                                DoseActor  profiledose_y
+#/gate/actor/profiledose_y/attachTo    	             actor_vol_profile_y
+/gate/actor/profiledose_y/attachTo                  phantom
+/gate/actor/profiledose_y/setSize                   {x_dim_profile_y} {y_dim_profile_y} {z_dim_profile_y} mm
+/gate/actor/profiledose_y/setPosition               0 0 -13.6 cm
+
+
+#at wich position is Hit stored
+/gate/actor/profiledose_y/stepHitType               random
+
+
+#set Resolution gives Dosel
+#/gate/actor/profiledose_y/setResolution             20 1 1
+/gate/actor/profiledose_y/setVoxelSize              4 4 4
+
+/gate/actor/profiledose_y/normaliseDoseToMax        false
+/gate/actor/profiledose_y/enableEdep                false
+/gate/actor/profiledose_y/enableUncertaintyEdep     false
+/gate/actor/profiledose_y/enableNumberOfHits        false
+/gate/actor/profiledose_y/enableDose                true
+/gate/actor/profiledose_y/enableUncertaintyDose     true
+/gate/actor/profiledose_y/saveEveryNSeconds         60
+
+
+
+
+
+
+
+
+# -----------------------------------------------------------------------------
+# OUTPUT
+
+
+
+/gate/actor/depthdose/save                      output/gamma-depth.txt
+/gate/actor/profiledose_x/save                  output/gamma-profile_x.txt
+/gate/actor/profiledose_y/save                  output/gamma-profile_y.txt
+
+
+
+/gate/actor/addActor                            SimulationStatisticActor stat
+/gate/actor/stat/save                           output/gamma-stat.txt
+/gate/actor/stat/saveEveryNSeconds              73
+
+
+
+
+# -----------------------------------------------------------------------------
+# INITIALISATION
+
+/gate/run/initialize
+
+# -----------------------------------------------------------------------------
+# SOURCE
+
+
+
+/control/alias SOURCE_PHSP                  data/TrueBeam_v2_6X_05.npy
+
+/control/alias SOURCE_PHSP_JSON             pth/TrueBeam_v2_6X_05.json
+/control/alias SOURCE_PHSP_PT               pth/TrueBeam_v2_6X_05.pt
+
+/control/alias ANALOG analog
+/control/alias GAGA gaga
+
+/control/strdoif {TYPE} == {ANALOG} /control/execute mac/source_phase_space.mac
+/control/strdoif {TYPE} == {GAGA} /control/execute mac/source_phase_space_gaga.mac
+
+/control/execute                            mac/start_N.mac
